@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Dining & Support System</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f0f9ff;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: #4a9dff;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav ul {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        nav li {
+            margin: 0.5rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            background-color: rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        /* Page Container */
+        .page {
+            display: none;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .active {
+            display: block;
+        }
+        
+        /* Content Styling */
+        h1 {
+            color: #2c6fbb;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-size: 2.2rem;
+        }
+        
+        h2 {
+            color: #4a9dff;
+            margin: 1.5rem 0 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .content-box {
+            background-color: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            overflow-x: auto;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        
+        th, td {
+            padding: 0.8rem;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        th {
+            background-color: #e6f2ff;
+            color: #2c6fbb;
+            font-weight: 600;
+        }
+        
+        tr:hover {
+            background-color: #f5faff;
+        }
+        
+        /* About Page */
+        #about {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 70vh;
+        }
+        
+        .work-references {
+            background-color: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+        }
+        
+        .work-references h1 {
+            color: #4a9dff;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav li {
+                margin: 0.3rem;
+            }
+            
+            .page {
+                padding: 1rem;
+            }
+            
+            .content-box {
+                padding: 1rem;
+            }
+            
+            table {
+                font-size: 0.9rem;
+            }
+            
+            th, td {
+                padding: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#" onclick="showPage('about')">About</a></li>
+            <li><a href="#" onclick="showPage('cc-sop')">CC SOP</a></li>
+            <li><a href="#" onclick="showPage('info-poc')">Info POC</a></li>
+            <li><a href="#" onclick="showPage('issue-poc')">Issue POC</a></li>
+            <li><a href="#" onclick="showPage('new-target-time')">New Target Time</a></li>
+            <li><a href="#" onclick="showPage('phone-directory')">Phone Directory</a></li>
+            <li><a href="#" onclick="showPage('regular-menu')">Regular Menu</a></li>
+            <li><a href="#" onclick="showPage('supplement')">Supplement</a></li>
+            <li><a href="#" onclick="showPage('target-times')">Target Times</a></li>
+        </ul>
+    </nav>
+
+    <!-- About Page -->
+    <div id="about" class="page active">
+        <div class="work-references">
+            <h1>Work References</h1>
+            <p>This dashboard provides access to hospital dining and support system information.</p>
+            <p>Use the navigation menu above to access different sections of the system.</p>
+        </div>
+    </div>
+
+    <!-- CC SOP Page -->
+    <div id="cc-sop" class="page">
+        <h1>CC SOP</h1>
+        <div class="content-box">
+            <table>
+                <tr>
+                    <th>Meal</th>
+                    <th>Tally / Task</th>
+                    <th>Time</th>
+                    <th>Cut Off Time</th>
+                </tr>
+                <tr>
+                    <td>BREAKFAST</td>
+                    <td>Night Before Tally</td>
+                    <td>7:15 PM</td>
+                    <td>7:00 PM (Night Before)</td>
+                </tr>
+                <tr>
+                    <td>BREAKFAST</td>
+                    <td>Breakfast Tally</td>
+                    <td>5:45 AM</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>LUNCH</td>
+                    <td>1st Tally</td>
+                    <td>9:45 AM</td>
+                    <td>9:45 AM</td>
+                </tr>
+                <tr>
+                    <td>LUNCH</td>
+                    <td>2nd Tally</td>
+                    <td>10:15 AM</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>DINNER</td>
+                    <td>1st Tally</td>
+                    <td>2:00 PM</td>
+                    <td>3:15 PM</td>
+                </tr>
+                <tr>
+                    <td>DINNER</td>
+                    <td>2nd Tally</td>
+                    <td>3:30 PM</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Trayline</td>
+                    <td>Food Ready on Line</td>
+                    <td>5:45 AM</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Trayline</td>
+                    <td>Food Ready on Line</td>
+                    <td>10:15 AM</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Trayline</td>
+                    <td>Food Ready on Line</td>
+                    <td>3:45 PM</td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- Info POC Page -->
+    <div id="info-poc" class="page">
+        <h1>Info POC</h1>
+        <div class="content-box">
+            <table>
+                <tr>
+                    <th>Category</th>
+                    <th>Title / Role</th>
+                    <th>Name / Description</th>
+                    <th>Phone Number / Details</th>
+                    <th>Cost Center / Notes</th>
+                </tr>
+                <tr>
+                    <td>Downtime Plan</td>
+                    <td>On-Site SME</td>
+                    <td>JODI BROUSSARD</td>
+                    <td>337-289-7049</td>
+                    <td>1st Level Application Support</td>
+                </tr>
+                <tr>
+                    <td>Downtime Plan</td>
+                    <td>Director</td>
+                    <td>ABBY GOSS</td>
+                    <td>337-289-7577</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Downtime Plan</td>
+                    <td>Patient Services Manager</td>
+                    <td>JANIS SCRITCHFIELD</td>
+                    <td>337-289-7590</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Downtime Plan</td>
+                    <td>Patient Services Manager</td>
+                    <td>PHILLIP BENEZECH</td>
+                    <td>337-289-7590</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Support Guide</td>
+                    <td>MyDining Help Desk</td>
+                    <td>General Support, ADT, Printers, etc.</td>
+                    <td>(877) 433-2939</td>
+                    <td>Cost Center # 64525</td>
+                </tr>
+                <tr>
+                    <td>Support Guide</td>
+                    <td>Ochsner Health System Help Desk</td>
+                    <td>Connectivity, Internet, Non-Compass Hardware</td>
+                    <td>504-842-3610</td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- Issue POC Page -->
+    <div id="issue-poc" class="page">
+        <h1>Issue POC</h1>
+        <div class="content-box">
+            <table>
+                <tr>
+                    <th>Who to Contact</th>
+                    <th>When to Contact</th>
+                    <th>Contact Info</th>
+                    <th>Details / Escalation</th>
+                </tr>
+                <tr>
+                    <td>MyDining Help Desk</td>
+                    <td>Admission, Discharge, Transfers Issues</td>
+                    <td>877-433-2639</td>
+                    <td>Hours: 6am-12am EST Mon-Fri; 8am-12am EST Sat-Sun</td>
+                </tr>
+                <tr>
+                    <td>MyDining Help Desk</td>
+                    <td>Interface Issues</td>
+                    <td>Provide Cost Center #64525</td>
+                    <td>Outside hours: On-Call Emergency Support (15-min response)</td>
+                </tr>
+                <tr>
+                    <td>MyDining Help Desk</td>
+                    <td>Application Issues</td>
+                    <td>Description of problem</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>MyDining Help Desk</td>
+                    <td>Ticket Printer Issues</td>
+                    <td>Duration of problem</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>MyDining Help Desk</td>
+                    <td>Print Manager PC Issues</td>
+                    <td>Contact Information</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>MyDining Help Desk</td>
+                    <td>Tray Tracking Issues</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Hospital Help Desk</td>
+                    <td>Network Connectivity Issues</td>
+                    <td>504-842-3610</td>
+                    <td>For Print Manager PC's, Printers, Plads</td>
+                </tr>
+                <tr>
+                    <td>MyDining Implementation Team</td>
+                    <td>EMR Conversions, Construction, Service Style Changes, Equipment</td>
+                    <td>877-433-2639</td>
+                    <td>Call Help Desk as a non-urgent request</td>
+                </tr>
+                <tr>
+                    <td>MyDining Menu Database Team</td>
+                    <td>New Menu or Menu Changes, Menu Additions, Item Management, Holiday Menus</td>
+                    <td>877-433-2639</td>
+                    <td>Call Help Desk as a non-urgent request</td>
+                </tr>
+                <tr>
+                    <td>MyDining Nutrition Informatics Team</td>
+                    <td>New Diet Orders, New Units/Ricorns/Beds, EMR Interface Changes, Functionality Question</td>
+                    <td>877-433-2639</td>
+                    <td>Call Help Desk as a non-urgent request</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- New Target Time Page -->
+    <div id="new-target-time" class="page">
+        <h1>New Target Time</h1>
+        <div class="content-box">
+            <h2>Units/Departments/Floors</h2>
+            <table>
+                <tr>
+                    <th>Unit/Department/Floor</th>
+                </tr>
+                <tr>
+                    <td>7 Central 1412047</td>
+                </tr>
+                <tr>
+                    <td>8th Central Post Op Med Surg 1082347</td>
+                </tr>
+                <tr>
+                    <td>8 South</td>
+                </tr>
+                <tr>
+                    <td>5 Central Medicine Renal 1392032</td>
+                </tr>
+                <tr>
+                    <td>5 West Med/Tele 1322204</td>
+                </tr>
+                <tr>
+                    <td>9 South Med Surg 1412046</td>
+                </tr>
+                <tr>
+                    <td>10 Central Ortho Med Surg 1202115</td>
+                </tr>
+                <tr>
+                    <td>6 Central Med Telemetry 1182266</td>
+                </tr>
+                <tr>
+                    <td>10 West Telemetry Med Surg 1322149</td>
+                </tr>
+                <tr>
+                    <td>4th Central Med TEle 1182264</td>
+                </tr>
+                <tr>
+                    <td>5WN ICU 1412047</td>
+                </tr>
+                <tr>
+                    <td>6th Pediatrics 1152219</td>
+                </tr>
+                <tr>
+                    <td>2nd Labor & Delivery 1162230</td>
+                </tr>
+                <tr>
+                    <td>2nd NICU 1162234</td>
+                </tr>
+                <tr>
+                    <td>3rd Mother Baby</td>
+                </tr>
+                <tr>
+                    <td>2nd Mother Baby 1162233</td>
+                </tr>
+                <tr>
+                    <td>7th North & East ICU</td>
+                </tr>
+                <tr>
+                    <td>7 South Neuro/Stroke 1172109</td>
+                </tr>
+                <tr>
+                    <td>9 West Med Surg 1182268</td>
+                </tr>
+                <tr>
+                    <td>8 West Oncology 1072120</td>
+                </tr>
+                <tr>
+                    <td>9 Central Emergency Department</td>
+                </tr>
+            </table>
+            
+            <h2>Breakfast Target Times</h2>
+            <table>
+                <tr>
+                    <th>Time Range</th>
+                </tr>
+                <tr>
+                    <td>06:20 AM - 06:50 AM</td>
+                </tr>
+                <tr>
+                    <td>06:25 AM - 06:55 AM</td>
+                </tr>
+                <tr>
+                    <td>06:25 AM - 06:55 AM</td>
+                </tr>
+                <tr>
+                    <td>06:25 AM - 06:55 AM</td>
+                </tr>
+                <tr>
+                    <td>06:30 AM - 07:00 AM</td>
+                </tr>
+                <tr>
+                    <td>06:35 AM - 07:05 AM</td>
+                </tr>
+                <tr>
+                    <td>06:40 AM - 07:10 AM</td>
+                </tr>
+                <tr>
+                    <td>06:45 AM - 07:15 AM</td>
+                </tr>
+                <tr>
+                    <td>07:05 AM - 07:35 AM</td>
+                </tr>
+                <tr>
+                    <td>07:20 AM - 07:50 AM</td>
+                </tr>
+                <tr>
+                    <td>07:25 AM - 07:55 AM</td>
+                </tr>
+                <tr>
+                    <td>07:25 AM - 07:55 AM</td>
+                </tr>
+                <tr>
+                    <td>07:35 AM - 08:05 AM</td>
+                </tr>
+                <tr>
+                    <td>07:35 AM - 08:05 AM</td>
+                </tr>
+                <tr>
+                    <td>07:40 AM - 08:10 AM</td>
+                </tr>
+                <tr>
+                    <td>07:45 AM - 08:15 AM</td>
+                </tr>
+                <tr>
+                    <td>07:50 AM - 08:20 AM</td>
+                </tr>
+                <tr>
+                    <td>07:55 AM - 08:25 AM</td>
+                </tr>
+                <tr>
+                    <td>08:00 AM - 08:30 AM</td>
+                </tr>
+                <tr>
+                    <td>08:05 AM - 08:35 AM</td>
+                </tr>
+                <tr>
+                    <td>08:00 AM - 08:30 AM</td>
+                </tr>
+            </table>
+            
+            <h2>Lunch Target Times</h2>
+            <table>
+                <tr>
+                    <th>Time Range</th>
+                </tr>
+                <tr>
+                    <td>10:55 AM - 11:25 AM</td>
+                </tr>
+                <tr>
+                    <td>11:00 AM - 11:30 AM</td>
+                </tr>
+                <tr>
+                    <td>11:00 AM - 11:30 AM</td>
+                </tr>
+                <tr>
+                    <td>11:05 AM - 11:35 AM</td>
+                </tr>
+                <tr>
+                    <td>11:10 AM - 11:40 AM</td>
+                </tr>
+                <tr>
+                    <td>11:15 AM - 11:45 AM</td>
+                </tr>
+                <tr>
+                    <td>11:20 AM - 11:50 AM</td>
+                </tr>
+                <tr>
+                    <td>11:25 AM - 11:55 AM</td>
+                </tr>
+                <tr>
+                    <td>11:45 AM - 12:15 PM</td>
+                </tr>
+                <tr>
+                    <td>12:00 PM - 12:30 PM</td>
+                </tr>
+                <tr>
+                    <td>12:05 PM - 12:35 PM</td>
+                </tr>
+                <tr>
+                    <td>12:05 PM - 12:35 PM</td>
+                </tr>
+                <tr>
+                    <td>12:15 PM - 12:45 PM</td>
+                </tr>
+                <tr>
+                    <td>12:15 PM - 12:45 PM</td>
+                </tr>
+                <tr>
+                    <td>12:20 PM - 12:50 PM</td>
+                </tr>
+                <tr>
+                    <td>12:25 PM - 12:55 PM</td>
+                </tr>
+                <tr>
+                    <td>12:30 PM - 01:00 PM</td>
+                </tr>
+                <tr>
+                    <td>12:35 PM - 01:05 PM</td>
+                </tr>
+                <tr>
+                    <td>12:40 PM - 01:10 PM</td>
+                </tr>
+                <tr>
+                    <td>12:45 PM - 01:15 PM</td>
+                </tr>
+                <tr>
+                    <td>12:40 PM - 01:10 PM</td>
+                </tr>
+            </table>
+            
+            <h2>Dinner Target Times</h2>
+            <table>
+                <tr>
+                    <th>Time Range</th>
+                </tr>
+                <tr>
+                    <td>04:35 PM - 05:05 PM</td>
+                </tr>
+                <tr>
+                    <td>04:40 PM - 05:10 PM</td>
+                </tr>
+                <tr>
+                    <td>04:45 PM - 05:15 PM</td>
+                </tr>
+                <tr>
+                    <td>04:40 PM - 05:10 PM</td>
+                </tr>
+                <tr>
+                    <td>04:45 PM - 05:15 PM</td>
+                </tr>
+                <tr>
+                    <td>04:45 PM - 05:15 PM</td>
+                </tr>
+                <tr>
+                    <td>04:45 PM - 05:15 PM</td>
+                </tr>
+                <tr>
+                    <td>05:00 PM - 05:30 PM</td>
+                </tr>
+                <tr>
+                    <td>05:20 PM - 05:50 PM</td>
+                </tr>
+                <tr>
+                    <td>05:35 PM - 06:05 PM</td>
+                </tr>
+                <tr>
+                    <td>05:40 PM - 06:10 PM</td>
+                </tr>
+                <tr>
+                    <td>05:40 PM - 06:10 PM</td>
+                </tr>
+                <tr>
+                    <td>05:50 PM - 06:20 PM</td>
+                </tr>
+                <tr>
+                    <td>05:50 PM - 06:20 PM</td>
+                </tr>
+                <tr>
+                    <td>06:05 PM - 06:25 PM</td>
+                </tr>
+                <tr>
+                    <td>06:00 PM - 06:30 PM</td>
+                </tr>
+                <tr>
+                    <td>06:05 PM - 06:35 PM</td>
+                </tr>
+                <tr>
+                    <td>06:10 PM - 06:40 PM</td>
+                </tr>
+                <tr>
+                    <td>06:15 PM - 06:45 PM</td>
+                </tr>
+                <tr>
+                    <td>06:20 PM - 06:50 PM</td>
+                </tr>
+                <tr>
+                    <td>06:15 PM - 06:45 PM</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- Phone Directory Page -->
+    <div id="phone-directory" class="page">
+        <h1>Phone Directory</h1>
+        <div class="content-box">
+            <table>
+                <tr>
+                    <th>Department/Unit</th>
+                    <th>Extension/Number</th>
+                    <th>Department/Unit</th>
+                    <th>Extension/Number</th>
+                </tr>
+                <tr>
+                    <td>3rd Floor - Mother/Baby</td>
+                    <td>7395</td>
+                    <td>Gift Shop</td>
+                    <td>7194</td>
+                </tr>
+                <tr>
+                    <td>4th Floor - Med/Telemetry</td>
+                    <td>7495</td>
+                    <td>MRI</td>
+                    <td>7470</td>
+                </tr>
+                <tr>
+                    <td>5th Floor - Med/Renal</td>
+                    <td>7596</td>
+                    <td>Staffing</td>
+                    <td>406-4133</td>
+                </tr>
+                <tr>
+                    <td>5-west - Med/Tele</td>
+                    <td>7556</td>
+                    <td>Helipad</td>
+                    <td>7195</td>
+                </tr>
+                <tr>
+                    <td>6th Floor - MS/Tele</td>
+                    <td>7695</td>
+                    <td>NICU</td>
+                    <td>7355</td>
+                </tr>
+                <tr>
+                    <td>6th Floor Rnabase - PEDS</td>
+                    <td>7639</td>
+                    <td>Stroke Coordinator</td>
+                    <td>7740</td>
+                </tr>
+                <tr>
+                    <td>6-west - OPS</td>
+                    <td>7088</td>
+                    <td>Help Desk</td>
+                    <td>8888</td>
+                </tr>
+                <tr>
+                    <td>7 Central - ICU</td>
+                    <td>7795</td>
+                    <td>Non-Invasive Lab</td>
+                    <td>7355</td>
+                </tr>
+                <tr>
+                    <td>7-South - Neuro/Stroke</td>
+                    <td>571-8740</td>
+                    <td>Supervisors</td>
+                    <td>8301</td>
+                </tr>
+                <tr>
+                    <td>8th Floor - Post-Op</td>
+                    <td>7895</td>
+                    <td>H1 M</td>
+                    <td>7771</td>
+                </tr>
+                <tr>
+                    <td>8-west - Oncology</td>
+                    <td>7826</td>
+                    <td>Nuclear Medicine</td>
+                    <td>7989</td>
+                </tr>
+                <tr>
+                    <td>9th Floor - Med/Surg</td>
+                    <td>7995</td>
+                    <td>Supply Chain</td>
+                    <td>3693</td>
+                </tr>
+                <tr>
+                    <td>9-South - Telemetry</td>
+                    <td>571-8940</td>
+                    <td>Holding/Recovery/PACU</td>
+                    <td>7877</td>
+                </tr>
+                <tr>
+                    <td>9-west - Med/Tele</td>
+                    <td>7926</td>
+                    <td>Nursery</td>
+                    <td>7778</td>
+                </tr>
+                <tr>
+                    <td>10th Floor - Ortho/Neuro/Trauma</td>
+                    <td>7095</td>
+                    <td>Surgery</td>
+                    <td>7870</td>
+                </tr>
+                <tr>
+                    <td>10-west - OBS/Float</td>
+                    <td>7026</td>
+                    <td>Hospitalist Office</td>
+                    <td>7922</td>
+                </tr>
+                <tr>
+                    <td>OLGO 3rd floor Ortho Unit</td>
+                    <td>989-6770</td>
+                    <td>Nursing Supervisor</td>
+                    <td>8901</td>
+                </tr>
+                <tr>
+                    <td>ABG's</td>
+                    <td>127-0183</td>
+                    <td>Surgery - Center Care</td>
+                    <td>7846</td>
+                </tr>
+                <tr>
+                    <td>Accounting (Accis. Payable)</td>
+                    <td>8121</td>
+                    <td>Hospitalist's-Admin/Consults</td>
+                    <td>7927</td>
+                </tr>
+                <tr>
+                    <td>Administration</td>
+                    <td>7374</td>
+                    <td>Occupational Health</td>
+                    <td>8450</td>
+                </tr>
+                <tr>
+                    <td>Administration - 920 Bldg</td>
+                    <td>7398</td>
+                    <td>Surgery Scheduling</td>
+                    <td>7879</td>
+                </tr>
+                <tr>
+                    <td>Admitting-Registration</td>
+                    <td>7180</td>
+                    <td>Housekeeping</td>
+                    <td>7688</td>
+                </tr>
+                <tr>
+                    <td>Angle Melancon-Pt. Advocate</td>
+                    <td>7280</td>
+                    <td>Odispert IS Soc. Desk</td>
+                    <td>504-843-860</td>
+                </tr>
+                <tr>
+                    <td>AR Courier</td>
+                    <td>993-2050</td>
+                    <td>Surgery-Waiting Room</td>
+                    <td>7882</td>
+                </tr>
+                <tr>
+                    <td>Bariatrics</td>
+                    <td>8484</td>
+                    <td>Housekeeping - Bed</td>
+                    <td>3847</td>
+                </tr>
+                <tr>
+                    <td>Bedding</td>
+                    <td>406-4119</td>
+                    <td>Old Training Site</td>
+                    <td>8655</td>
+                </tr>
+                <tr>
+                    <td>Bistro-Cafeteria</td>
+                    <td>7581</td>
+                    <td>Telecommunications</td>
+                    <td>7171</td>
+                </tr>
+                <tr>
+                    <td>Blood Bank</td>
+                    <td>7675</td>
+                    <td>Housekeeping - Supervisor</td>
+                    <td>3942</td>
+                </tr>
+                <tr>
+                    <td>BRACC (Diagnostics)</td>
+                    <td>8000</td>
+                    <td>Outpatient Diagnostics</td>
+                    <td>8303</td>
+                </tr>
+                <tr>
+                    <td>Breast Center</td>
+                    <td>571-1300</td>
+                    <td>Telemetry</td>
+                    <td>2525</td>
+                </tr>
+                <tr>
+                    <td>Breastfeeding Resource Cir</td>
+                    <td>7227</td>
+                    <td>Human Resources</td>
+                    <td>8446</td>
+                </tr>
+                <tr>
+                    <td>Brenda Patin-Financial</td>
+                    <td>8867</td>
+                    <td>Owen Auditorium</td>
+                    <td>7774</td>
+                </tr>
+                <tr>
+                    <td>Cancer Center</td>
+                    <td>8400</td>
+                    <td>Teleletter</td>
+                    <td>8963</td>
+                </tr>
+                <tr>
+                    <td>Cardiac Rehab - Office</td>
+                    <td>7773</td>
+                    <td>Hyperbaries</td>
+                    <td>7188</td>
+                </tr>
+                <tr>
+                    <td>Cardiology Non-Invasive Office</td>
+                    <td>7390</td>
+                    <td>PACE Clinic</td>
+                    <td>7223</td>
+                </tr>
+                <tr>
+                    <td>Case Mgmt. (Sitter List)</td>
+                    <td>7975</td>
+                    <td>Transcription</td>
+                    <td>2071</td>
+                </tr>
+                <tr>
+                    <td>Cath Lab</td>
+                    <td>7876/7344</td>
+                    <td>ICU-North - 7th floor (1:10)</td>
+                    <td>7726</td>
+                </tr>
+                <tr>
+                    <td>Central Scheduling</td>
+                    <td>7080</td>
+                    <td>Pastoral Care</td>
+                    <td>7483</td>
+                </tr>
+                <tr>
+                    <td>Central Sterile</td>
+                    <td>2836/2838</td>
+                    <td>Transport</td>
+                    <td>7761</td>
+                </tr>
+                <tr>
+                    <td>Central Supply Chain</td>
+                    <td>3639</td>
+                    <td>ICU-South - 7th floor (11:30)</td>
+                    <td>7756</td>
+                </tr>
+                <tr>
+                    <td>ClS</td>
+                    <td>8696</td>
+                    <td>Patient Adviser</td>
+                    <td>7387</td>
+                </tr>
+                <tr>
+                    <td>Clinical Engineering</td>
+                    <td>7487</td>
+                    <td>Transport Supervisor</td>
+                    <td>7762</td>
+                </tr>
+                <tr>
+                    <td>Coffee Shop-Brew Bayou</td>
+                    <td>3305</td>
+                    <td>ICU-East - 7th floor (21:28)</td>
+                    <td>7711</td>
+                </tr>
+                <tr>
+                    <td>Community Relations</td>
+                    <td>8600</td>
+                    <td>Patient Prep./Advocate</td>
+                    <td>7280</td>
+                </tr>
+                <tr>
+                    <td>Corp Legal-Risk Mgmt.</td>
+                    <td>571-0120</td>
+                    <td>Ultrasound</td>
+                    <td>7980</td>
+                </tr>
+                <tr>
+                    <td>Counadin Clinic</td>
+                    <td>7557</td>
+                    <td>ICU - 5-west North (33:40)</td>
+                    <td>7526</td>
+                </tr>
+                <tr>
+                    <td>CPO</td>
+                    <td>8963</td>
+                    <td>Patient Information</td>
+                    <td>7111</td>
+                </tr>
+                <tr>
+                    <td>CT Scanner</td>
+                    <td>7986</td>
+                    <td>Uncryhmatics</td>
+                    <td>7465</td>
+                </tr>
+                <tr>
+                    <td>CVSS</td>
+                    <td>7102</td>
+                    <td>Infection Prevention</td>
+                    <td>7484/7487/7898</td>
+                </tr>
+                <tr>
+                    <td>Cyberknife</td>
+                    <td>8070</td>
+                    <td>Patient Pre-Registration</td>
+                    <td>7746/7162</td>
+                </tr>
+                <tr>
+                    <td>Deaf Action Center</td>
+                    <td>232-3463</td>
+                    <td>Utilization Mgmt.</td>
+                    <td>7443</td>
+                </tr>
+                <tr>
+                    <td>Dialysis - 5th Floor</td>
+                    <td>7528</td>
+                    <td>Interventional Radiology</td>
+                    <td>8893</td>
+                </tr>
+                <tr>
+                    <td>Dietary</td>
+                    <td>7575</td>
+                    <td>Payroll</td>
+                    <td>8122</td>
+                </tr>
+                <tr>
+                    <td>Dietary - Nutrition</td>
+                    <td>7581</td>
+                    <td>Vascular Lab</td>
+                    <td>7555</td>
+                </tr>
+                <tr>
+                    <td>Dieticians</td>
+                    <td>7584</td>
+                    <td>Lab - OFFICE</td>
+                    <td>7671</td>
+                </tr>
+                <tr>
+                    <td>Discharge Lounge</td>
+                    <td>2789</td>
+                    <td>Perfusion</td>
+                    <td>2820</td>
+                </tr>
+                <tr>
+                    <td>Doctors' Dining Room</td>
+                    <td>7589</td>
+                  
+</html>
